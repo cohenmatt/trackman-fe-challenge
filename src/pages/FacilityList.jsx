@@ -1,13 +1,13 @@
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, Button } from "@mui/material";
 import Facility from "../features/facility/Facility";
-import Navbar from "../components/Navbar";
 import { Counter } from "../features/counter/Counter";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function FacilityList() {
+    const goTo = useNavigate();
+    
     return (
         <>
-        <Navbar />
         <Box sx={{p: 4}}>
             <Grid container spacing={2}>
                 <Grid size={4}>
@@ -22,7 +22,7 @@ export default function FacilityList() {
             </Grid>
         </Box>
         <Counter></Counter> 
-        <Link to="/edit">Edit</Link>
+        <Button variant="contained" onClick={() => goTo("/edit")}>Edit</Button>
         </>
     );
 }
