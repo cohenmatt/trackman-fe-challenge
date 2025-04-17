@@ -1,17 +1,15 @@
 import "./App.css";
-import Navbar from "./components/Navbar";
-import { Counter } from "./features/counter/Counter";
+import FacilityEdit from "./pages/FacilityEdit";
 import FacilityList from "./pages/FacilityList";
-import { Box } from "@mui/material";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-    return (
+  return (
         <>
-            <Navbar />
-            <Box sx={{p: 4}}>
-              <FacilityList />
-            </Box>
-            <Counter></Counter> 
+        <Routes>
+          <Route path="/" element={<FacilityList />} />
+          <Route path="/edit" element={<FacilityEdit />} />
+        </Routes>
         </>
     );
 }
