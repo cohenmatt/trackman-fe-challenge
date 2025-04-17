@@ -1,13 +1,28 @@
-import { Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, Grid, Typography } from "@mui/material";
+import { useSelector } from "react-redux";
 
-export default function Facility({name, address, description, imgSrc, hours, openStatus}) {
+export default function Facility({id}) {
+    
+    // Redux state
+    const facility = useSelector(state => state.facilityList.byId[id]);
+    const allFacilities = useSelector(state => state.facilityList.allIds);
+    console.log("All: ", allFacilities);
+    console.log("Facility: ", facility);
+    console.log("Address: ", facility.address);
+
+
     return (
-        <Card variant="outlined">
-            <CardContent>
-                <Typography>
-                    {name}
-                </Typography>
-            </CardContent>
-        </Card>
+        <Grid item size={4} key={id}>
+            <Card variant="outlined">
+                <CardContent>
+                    <Typography>
+                        {facility.name}
+                    </Typography>
+                    <Typography>
+                        {facility.address}
+                    </Typography>
+                </CardContent>
+            </Card>
+        </Grid>
     );
 }
