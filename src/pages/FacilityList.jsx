@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import Facility from "../components/Facility";
+import Facility from "../features/facility/Facility";
 
 export default function FacilityList() {
     return (
