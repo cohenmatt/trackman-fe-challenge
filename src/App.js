@@ -10,7 +10,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<FacilityList />} />
-          <Route path="/edit" element={<FacilityEdit />} />
+          <Route path="/edit" element={<FacilityEdit />}>
+            <Route path=":facilityId" element={<FacilityEdit />} />
+          </Route>
         </Routes>
         </>
     );

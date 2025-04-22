@@ -1,14 +1,14 @@
-import { Card, CardContent, Grid, IconButton, Typography } from "@mui/material";
+import { Card, CardContent, Grid, IconButton, Typography, Stack, Button } from "@mui/material";
 import { DeleteIcon } from "../../components/DeleteIcon.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFacility } from "../facilityList/facilityListSlice.js";
+import { useNavigate } from "react-router-dom";
 
 export default function Facility({id}) {
-    
-    // Redux state
     const byId = useSelector(state => state.facilityList.byId);
     const dispatch = useDispatch();
     const facilityProps = byId[id];
+    const goTo = useNavigate();
 
     return (
         <Grid item size={4} key={id}>
@@ -23,9 +23,14 @@ export default function Facility({id}) {
                     <Typography>
                         {facilityProps.address}
                     </Typography>
-                    <IconButton aria-label="delete" onClick={() => dispatch(removeFacility(id))}>
-                        <DeleteIcon />
-                    </IconButton>
+                    <Stack direction="row">
+                        <IconButton aria-label="delete" onClick={() => dispatch(removeFacility(id))}>
+                            <DeleteIcon />
+                        </IconButton>
+                        <Button variant="contained" onClick={() => goTo(`/edit/${id}`)}>
+                            Edit
+                        </Button>
+                    </Stack>
                 </CardContent>
             </Card>
         </Grid>
