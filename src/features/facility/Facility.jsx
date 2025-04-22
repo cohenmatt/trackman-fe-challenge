@@ -1,10 +1,13 @@
-import { Card, CardContent, Grid, Typography } from "@mui/material";
-import { useSelector } from "react-redux";
+import { Card, CardContent, Grid, IconButton, Typography } from "@mui/material";
+import { DeleteIcon } from "../../components/DeleteIcon.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFacility } from "../facilityList/facilityListSlice.js";
 
 export default function Facility({id}) {
     
     // Redux state
     const byId = useSelector(state => state.facilityList.byId);
+    const dispatch = useDispatch();
     const facilityProps = byId[id];
 
     return (
@@ -20,6 +23,9 @@ export default function Facility({id}) {
                     <Typography>
                         {facilityProps.address}
                     </Typography>
+                    <IconButton aria-label="delete" onClick={() => dispatch(removeFacility(id))}>
+                        <DeleteIcon />
+                    </IconButton>
                 </CardContent>
             </Card>
         </Grid>

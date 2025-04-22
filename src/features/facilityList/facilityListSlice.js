@@ -21,9 +21,9 @@ export const facilityListSlice = createSlice({
       }
     },
     removeFacility: (state, action) => {
-      const facilityId = action.payload;
-      delete state.byId[facilityId];
-      state.allIds = state.allIds.filter(id => id !== facilityId);
+      const id = action.payload;
+      delete state.byId[id];
+      state.allIds = state.allIds.filter(sId => sId !== id);
     }
   }
 })
