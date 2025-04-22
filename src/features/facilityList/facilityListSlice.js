@@ -3,14 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 export const facilityListSlice = createSlice({
   name: 'facilityList',
   initialState: {
-    byId: {
-        // Sample
-        'facility1': {
-            id: 'facility1',
-            name: 'Facility 1',
-            address: '123 Main St'
-        }
-    },
+    byId: {},
     allIds: []
   },
   reducers: {
@@ -22,9 +15,9 @@ export const facilityListSlice = createSlice({
       }
     },
     setAddress: (state, action) => {
-      const { facilityId, address } = action.payload;
-      if (state.byId[facilityId]) {
-        state.byId[facilityId].address = address;
+      const {id, address} = action.payload;
+      if (state.byId[id]) {
+        state.byId[id].address = address;
       }
     },
     removeFacility: (state, action) => {

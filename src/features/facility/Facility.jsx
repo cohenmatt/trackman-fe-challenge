@@ -4,22 +4,21 @@ import { useSelector } from "react-redux";
 export default function Facility({id}) {
     
     // Redux state
-    const facility = useSelector(state => state.facilityList.byId[id]);
-    const allFacilities = useSelector(state => state.facilityList.allIds);
-    console.log("All: ", allFacilities);
-    console.log("Facility: ", facility);
-    console.log("Address: ", facility.address);
-
+    const byId = useSelector(state => state.facilityList.byId);
+    const facilityProps = byId[id];
 
     return (
         <Grid item size={4} key={id}>
             <Card variant="outlined">
                 <CardContent>
                     <Typography>
-                        {facility.name}
+                        {facilityProps.id}
                     </Typography>
                     <Typography>
-                        {facility.address}
+                        {facilityProps.name}
+                    </Typography>
+                    <Typography>
+                        {facilityProps.address}
                     </Typography>
                 </CardContent>
             </Card>

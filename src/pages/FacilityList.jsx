@@ -7,29 +7,27 @@ import { addFacility } from "../features/facilityList/facilityListSlice";
 
 export default function FacilityList() {
     const goTo = useNavigate();
-    const facilities = useSelector(state => state.facilityList.allIds);
+    const allIds = useSelector(state => state.facilityList.allIds);
+    const count = useSelector(state => state.counter.value)
     const dispatch = useDispatch();
 
-    const sample = {
-        'facility1': {
-            id: 'facility1',
-            name: 'Facility 1',
-            address: '123 Main St'
-        }
-    };
+    const facility = {};
+    facility.id = count;
+    facility.name = 'Facility 3';
+    facility.address = '123 Main St';
     
     return (
         <>
         <Box sx={{p: 4}}>
             <Grid container spacing={2}>
-                {facilities.map(facilityId => (
+                {allIds.map(facilityId => (
                     <Facility id={facilityId} />
                 ))}
             </Grid>
         </Box>
         <Counter></Counter> 
         <Button variant="contained" onClick={() => goTo("/edit")}>Edit</Button>
-        <Button variant="contained" onClick={() => dispatch(addFacility(sample))}>Add sample</Button>
+        <Button variant="contained" onClick={() => dispatch(addFacility(facility))}>Add sample</Button>
         </>
     );
 }
