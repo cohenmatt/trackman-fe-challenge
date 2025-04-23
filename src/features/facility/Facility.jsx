@@ -14,6 +14,7 @@ export default function Facility({id}) {
         <Grid item size={4} key={id}>
             <Card variant="outlined">
                 <CardContent>
+                    <img src={facilityProps.imageUrl} alt="Golf course" height={100}/>
                     <Typography>
                         {facilityProps.id}
                     </Typography>
