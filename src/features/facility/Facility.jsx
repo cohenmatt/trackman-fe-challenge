@@ -4,6 +4,8 @@ import { StarIcon } from "../../components/StarIcon.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFacility } from "../facilityList/facilityListSlice.js";
 import { useNavigate } from "react-router-dom";
+import fallbackImage from "../../images/facility_generic.jpg";
+
 
 export default function Facility({id}) {
     const byId = useSelector(state => state.facilityList.byId);
@@ -17,10 +19,11 @@ export default function Facility({id}) {
             <Card variant="outlined">
                 <CardContent>
                     {isDefaultId && <StarIcon />}
-                    <img src={facilityProps.imageUrl} alt="Golf course" height={100}/>
-                    <Typography>
-                        {facilityProps.id}
-                    </Typography>
+                    <img
+                        src={facilityProps.imageUrl || fallbackImage}
+                        alt="Facility preview"
+                        height={100}
+                        />
                     <Typography>
                         {facilityProps.name}
                     </Typography>

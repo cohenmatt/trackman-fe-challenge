@@ -9,7 +9,6 @@ export default function FacilityEdit() {
     const goTo = useNavigate();
     const dispatch = useDispatch();
     const onSubmit = (data) => {
-        console.log("Data", data);
         dispatch(addFacility(data));
         goTo("/");
     };
