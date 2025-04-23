@@ -8,7 +8,14 @@ Hoping it's enought to at least have a conversation about.
 
 Thanks for the opportunity! I had fun doing this.
 
-- Matt
+—- Matt
+
+# Stack decisions
+
+- Material UI (MUI): for styling and out of the box components
+- Redux Tool Kit (RTK): for data persistence and global state management
+- React Hook Form: for easier forms
+- React Router: for navigating between pages
 
 # Checklist
 

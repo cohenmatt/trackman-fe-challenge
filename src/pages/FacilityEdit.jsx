@@ -16,12 +16,9 @@ export default function FacilityEdit() {
     const params = useParams();
     const isEditMode = params.facilityId !== undefined;
 
-    // TODO: protect against undefined ID?
     const facilityInfo = useSelector(state => state.facilityList.byId[params.facilityId]);
     const isFirstFacility = useSelector(state => state.facilityList.allIds.length < 1);
     const isDefaultId = useSelector(state => state.facilityList.defaultId === params.facilityId);
-
-    console.log("facilityInfo", facilityInfo);
 
     return(
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -116,8 +113,8 @@ export default function FacilityEdit() {
                         )}
                     />
                 </Stack>
-                <Button type="submit">Submit</Button>
-                <Button variant="contained" onClick={() => goTo("/")}>Back</Button>
+                <Button variant="contained" type="submit">Submit</Button>
+                <Button variant="outlined" onClick={() => goTo("/")}>Back</Button>
             </Stack>
         </form>
     )
