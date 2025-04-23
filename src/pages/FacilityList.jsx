@@ -18,6 +18,9 @@ export default function FacilityList() {
     
     return (
         <>
+        <Box>
+            <Button variant="contained" onClick={() => goTo("/edit")}>Create Facility</Button>
+        </Box>
         <Box sx={{p: 4}}>
             <Grid container spacing={2}>
                 {allIds.map(facilityId => (
@@ -26,7 +29,6 @@ export default function FacilityList() {
             </Grid>
         </Box>
         <Counter></Counter> 
-        <Button variant="contained" onClick={() => goTo("/edit")}>Edit</Button>
         <Button variant="contained" onClick={() => dispatch(addFacility(facility))}>Add sample</Button>
         </>
     );

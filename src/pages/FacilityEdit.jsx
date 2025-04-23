@@ -18,6 +18,10 @@ export default function FacilityEdit() {
 
     // TODO: protect against undefined ID?
     const facilityInfo = useSelector(state => state.facilityList.byId[params.facilityId]);
+    const isFirstFacility = useSelector(state => state.facilityList.allIds.length < 1);
+    const isDefaultId = useSelector(state => state.facilityList.defaultId === params.facilityId);
+
+    console.log("facilityInfo", facilityInfo);
 
     return(
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -73,10 +77,10 @@ export default function FacilityEdit() {
                 <Controller
                     name="isDefault"
                     control={control}
-                    defaultValue={isEditMode ? facilityInfo.isDefault : false}
+                    defaultValue={isEditMode ? isDefaultId : isFirstFacility}
                     render={({ field }) => (
                         <FormControlLabel 
-                            control={<Checkbox {...field} checked={field.value} />} 
+                            control={<Checkbox {...field} checked={field.value} disabled={isFirstFacility || (isDefaultId && isEditMode && !isFirstFacility)}/>} 
                             label={
                                 <>
                                     <Typography variant="body1">
