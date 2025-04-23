@@ -42,7 +42,7 @@ export default function FacilityEdit() {
                     control={control}
                     defaultValue={isEditMode ? facilityInfo.name : ""}
                     render={({ field }) => (
-                        <TextField {...field} label="Facility Name" variant="outlined" />
+                        <TextField {...field} required label="Facility Name" variant="outlined" />
                     )}
                 />
                 <Controller
@@ -50,7 +50,7 @@ export default function FacilityEdit() {
                     control={control}
                     defaultValue={isEditMode ? facilityInfo.address : ""}
                     render={({ field }) => (
-                        <TextField {...field} label="Address" variant="outlined" />
+                        <TextField {...field} required label="Address" variant="outlined" />
                     )}
                 />
                 <Controller
@@ -59,6 +59,7 @@ export default function FacilityEdit() {
                     defaultValue={isEditMode ? facilityInfo.description : ""}
                     render={({ field }) => (
                         <TextField {...field}
+                            required
                             label="Description"
                             variant="outlined"
                             multiline
@@ -71,7 +72,7 @@ export default function FacilityEdit() {
                     control={control}
                     defaultValue={isEditMode ? facilityInfo.imageUrl : ""}
                     render={({ field }) => (
-                        <TextField {...field} type="url" label="Cover Image URL" variant="outlined"/>
+                        <TextField {...field} required type="url" label="Cover Image URL" variant="outlined"/>
                     )}
                 />
                 <Controller
@@ -97,22 +98,24 @@ export default function FacilityEdit() {
                 <Typography variant="h3">
                     Working Hours
                 </Typography>
-                <Controller
-                    name="openingTime"
-                    control={control}
-                    defaultValue={isEditMode ? facilityInfo.openingTime : ""}
-                    render={({ field }) => (
-                        <TextField {...field} type="time" label="Opening Time" variant="outlined" />
-                    )}
-                />
-                <Controller
-                    name="closingTime"
-                    control={control}
-                    defaultValue={isEditMode ? facilityInfo.closingTime : ""}
-                    render={({ field }) => (
-                        <TextField {...field} type="time" label="Closing Time" variant="outlined" />
-                    )}
-                />
+                <Stack direction="row">
+                    <Controller
+                        name="openingTime"
+                        control={control}
+                        defaultValue={isEditMode ? facilityInfo.openingTime : ""}
+                        render={({ field }) => (
+                            <TextField {...field} required type="time" label="Opening Time" variant="outlined" />
+                        )}
+                    />
+                    <Controller
+                        name="closingTime"
+                        control={control}
+                        defaultValue={isEditMode ? facilityInfo.closingTime : ""}
+                        render={({ field }) => (
+                            <TextField {...field} required type="time" label="Closing Time" variant="outlined" />
+                        )}
+                    />
+                </Stack>
                 <Button type="submit">Submit</Button>
                 <Button variant="contained" onClick={() => goTo("/")}>Back</Button>
             </Stack>

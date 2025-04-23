@@ -1,15 +1,12 @@
 import { Grid, Box, Button } from "@mui/material";
 import Facility from "../features/facility/Facility";
-import { Counter } from "../features/counter/Counter";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { addFacility } from "../features/facilityList/facilityListSlice";
+import { useSelector } from "react-redux";
 
 export default function FacilityList() {
     const goTo = useNavigate();
     const allIds = useSelector(state => state.facilityList.allIds);
     const count = useSelector(state => state.counter.value)
-    const dispatch = useDispatch();
 
     const facility = {};
     facility.id = count;
@@ -17,19 +14,20 @@ export default function FacilityList() {
     facility.address = '123 Main St';
     
     return (
-        <>
-        <Box>
-            <Button variant="contained" onClick={() => goTo("/edit")}>Create Facility</Button>
+        <Box sx={{
+            width: "1200px",
+            pt: "32px"
+        }}>
+            <Box>
+                <Button variant="contained" onClick={() => goTo("/edit")}>Create Facility</Button>
+            </Box>
+            <Box sx={{p: 4}}>
+                <Grid container spacing={2}>
+                    {allIds.map(facilityId => (
+                        <Facility id={facilityId} />
+                    ))}
+                </Grid>
+            </Box>
         </Box>
-        <Box sx={{p: 4}}>
-            <Grid container spacing={2}>
-                {allIds.map(facilityId => (
-                    <Facility id={facilityId} />
-                ))}
-            </Grid>
-        </Box>
-        <Counter></Counter> 
-        <Button variant="contained" onClick={() => dispatch(addFacility(facility))}>Add sample</Button>
-        </>
     );
 }

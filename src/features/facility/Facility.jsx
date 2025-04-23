@@ -1,4 +1,4 @@
-import { Card, CardContent, Grid, IconButton, Typography, Stack, Button } from "@mui/material";
+import { Card, CardContent, Grid, IconButton, Typography, Stack, Button, Chip } from "@mui/material";
 import { DeleteIcon } from "../../components/DeleteIcon.jsx";
 import { StarIcon } from "../../components/StarIcon.jsx";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,10 +13,20 @@ export default function Facility({id}) {
     const dispatch = useDispatch();
     const facilityProps = byId[id];
     const goTo = useNavigate();
+    
+    const date = new Date();
+    const currentTime = date.getHours();
+    const openingTime = parseInt(facilityProps.openingTime.split(':')[0], 10);
+    const closingTime = parseInt(facilityProps.closingTime.split(':')[0], 10);
+    const isOpen = currentTime >= openingTime && currentTime < closingTime;
 
     return (
-        <Grid item size={4} key={id}>
-            <Card variant="outlined">
+        <Grid size={4} key={id}>
+            <Card variant="outlined" sx={{
+                width: "348px",
+                borderRadius: "8px",
+                padding: "12px"
+            }}>
                 <CardContent>
                     {isDefaultId && <StarIcon />}
                     <img
@@ -24,9 +34,12 @@ export default function Facility({id}) {
                         alt="Facility preview"
                         height={100}
                         />
-                    <Typography>
-                        {facilityProps.name}
-                    </Typography>
+                    <Stack direction="row">
+                        <Typography>
+                            {facilityProps.name}
+                        </Typography>
+                        <Chip label={isOpen ? "open" : "closed"} color={isOpen ? "success" : "error"}/>
+                    </Stack>
                     <Typography>
                         {facilityProps.address}
                     </Typography>
