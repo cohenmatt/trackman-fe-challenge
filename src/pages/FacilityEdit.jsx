@@ -9,6 +9,7 @@ export default function FacilityEdit() {
     const goTo = useNavigate();
     const dispatch = useDispatch();
     const onSubmit = (data) => {
+        console.log("Data", data);
         dispatch(addFacility(data));
         goTo("/");
     };
@@ -32,9 +33,9 @@ export default function FacilityEdit() {
                 <Controller
                     name="id"
                     control={control}
-                    defaultValue={isEditMode ? facilityInfo.id : ""}
+                    defaultValue={isEditMode ? facilityInfo.id : Math.random().toString(36).slice(2, 10)}
                     render={({ field }) => (
-                        <TextField {...field} label="ID" variant="outlined" />
+                        <input type="hidden" {...field} />
                     )}
                 />
                 <Controller
