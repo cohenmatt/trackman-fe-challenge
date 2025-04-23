@@ -47,6 +47,7 @@ UI
 
 # What I would have done with more time
 
+- Comments! I didn't document my code as well as I would have liked
 - MUI theme styling to match Trackman
 - The component styling and general page stucture
 - Better use of hooks, not just Redux Tool Kit slice
