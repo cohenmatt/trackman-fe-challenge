@@ -1,4 +1,57 @@
-# Initial thoughts
+# A note to the reviewer
+
+Hey! Unfortunately this proved too big of a task for me to complete in full. I built most of the functionality but didn't get around to styling or proper component/page layout stuff. 
+
+In lieu of that, I've left some thoughts below the checklist outlining what I would have done with more time, and and some limitations/shortfalls of the approach I took.
+
+Hoping it's enought to at least have a conversation about.
+
+Thanks for the opportunity! I had fun doing this.
+
+- Matt
+
+# Checklist
+
+Facility List Page
+- [ ] Displays all facilities in a card/grid format.
+- [x] Each card shows facility name, address, description, image, and working hours (open/close time).
+- [x] A badge should indicate if a facility is Open/Closed based on the current time.
+- [x] Users can edit or delete facilities.
+- [x] Once a facility is created, the user should be redirected back to the list view.
+
+Create/Edit Facility Page
+- [x] Form fields: Name, address, description, image URL, default facility checkbox, and opening & closing hours.
+- [x] Only one facility can be marked as default at a time.
+- [x] When creating the first facility, it should be default by default (checkbox disabled).
+- [x] When another facility is set as default, it overrides the previous default facility.
+- [x] If the default facility is deleted, another should automatically become the default.
+- [x] Once a facility is created, the user should be redirected back to the list view.
+
+Technical Requirements
+- [x] A plain React app with your preferred setup.
+- [x] Data persistence (no database needed).
+- [ ] Styling using any preferred approach or tool.
+- [x] Use GitHub for code management and follow Conventional Commits for commit messages.
+
+UI
+- [ ] Confirm delete dialog
+- [ ] Card format/spacing/styling
+- [ ] Edit facility page styling
+
+# What I would have done with more time
+
+- MUI theme styling to match Trackman
+- The component styling and general page stucture
+- Better use of hooks, not just Redux Tool Kit slice
+- Better modularisation of components. In the rush to finish I didn't do the best job of separating concerns. Just lumped new functionatlity into the most appropriate component.
+- Tidy file structure. I set it up initially to match what RTK suggest (i.e. pairing a slice.js file with component.jsx in the same folder). Felt like this was overkill.
+
+# Limitations/shortfalls of my code
+
+- I chose not to use TypeScript but I should have. Ultimately strong typing is just better and safer.
+- In-line MUI styling without much thought of a style/design system is messy. Ideally I would build this out in a more structured way.
+
+# Initial thoughts & plan (written at the start)
 
 - Need a FE component library to make things easier. Bootstrap or MUI?
 - I can use any styling so probably MUI because I’m most familiar
@@ -20,21 +73,3 @@
     - Create / Edit facility
         - Input
         - Text area
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-
